@@ -1,0 +1,119 @@
+configuration {
+    modi: "drun,run,window,Power:~/.config/rofi/scripts/power.sh,WiFi:~/.config/rofi/scripts/wifi.sh,BT:~/.config/rofi/scripts/bt.sh";
+    show-icons: true;
+    display-drun: " ";
+    display-run: " ";
+    display-window: " ";
+    display-Power: " ";
+    display-WiFi: " ";
+    display-BT: " ";
+    drun-display-format: "{icon} {name}";
+    font: "CaskaydiaMono Nerd Font 12";
+    terminal: "ghostty";
+    kb-mode-next: "Tab";
+    kb-element-next: "";
+    xft-dpi: 96;
+    xft-antialias: true;
+    xft-hinting: true;
+}
+
+@theme "/dev/null"
+
+* {
+    bg-col:  rgba(26, 27, 38, 0.7);
+    bg-col-light: rgba(36, 40, 59, 0.7);
+    border-col: #7aa2f7;
+    selected-col: rgba(40, 52, 87, 0.8);
+    blue: #7aa2f7;
+    fg-col: #c0caf5;
+    fg-col2: #a9b1d6;
+    width: 600;
+}
+
+element-text, element-icon {
+    background-color: inherit;
+    text-color:       inherit;
+}
+
+window {
+    height: 360px;
+    border: 2px;
+    border-color: @blue;
+    background-color: @bg-col;
+    border-radius: 12px;
+}
+
+mainbox {
+    background-color: transparent;
+    children: [inputbar, listview, mode-switcher];
+}
+
+inputbar {
+    children: [prompt, entry];
+    background-color: @bg-col-light;
+    border-radius: 8px;
+    margin: 10px 10px 0px 10px;
+    padding: 2px;
+}
+
+prompt {
+    background-color: @blue;
+    padding: 8px 12px;
+    text-color: #1a1b26;
+    border-radius: 6px;
+}
+
+entry {
+    padding: 8px;
+    text-color: @fg-col;
+    background-color: transparent;
+    placeholder: "Search...";
+    placeholder-color: @fg-col2;
+}
+
+listview {
+    border: 0px;
+    padding: 10px;
+    margin: 0px 10px 10px 10px;
+    columns: 1;
+    lines: 8;
+    background-color: transparent;
+    fixed-height: false;
+    dynamic: true;
+}
+
+element {
+    padding: 8px;
+    background-color: transparent;
+    text-color: @fg-col2;
+    border-radius: 6px;
+}
+
+element-icon {
+    size: 24px;
+    margin: 0 10px 0 0;
+}
+
+element selected {
+    background-color:  @selected-col;
+    text-color: @blue;
+}
+
+mode-switcher {
+    spacing: 0;
+    margin: 0 10px 10px 10px;
+}
+
+button {
+    padding: 10px;
+    background-color: transparent;
+    text-color: @fg-col2;
+    vertical-align: 0.5; 
+    horizontal-align: 0.5;
+}
+
+button selected {
+    background-color: @selected-col;
+    text-color: @blue;
+    border-radius: 6px;
+}
