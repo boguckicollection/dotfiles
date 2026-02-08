@@ -1,18 +1,20 @@
 configuration {
-    modi: "drun,run,window,Power:~/.config/rofi/scripts/power.sh,WiFi:~/.config/rofi/scripts/wifi.sh,BT:~/.config/rofi/scripts/bt.sh";
+    modi: "drun";
     show-icons: true;
-    display-drun: " ";
-    display-run: " ";
-    display-window: " ";
-    display-Power: " ";
-    display-WiFi: " ";
-    display-BT: " ";
+    display-drun: " ";
     drun-display-format: "{icon} {name}";
-    font: "CaskaydiaMono Nerd Font 12";
+    font: "Sans 12";
     terminal: "ghostty";
-    kb-mode-next: "Tab";
+    
+    kb-mode-next: "";
+    kb-mode-previous: "";
     kb-element-next: "";
-    xft-dpi: 96;
+    kb-element-prev: "";
+    kb-row-down: "Down,Tab";
+    kb-row-up: "Up,Shift+Tab";
+    kb-accept-entry: "Return,KP_Enter";
+    
+    xft-dpi: 0;
     xft-antialias: true;
     xft-hinting: true;
 }
@@ -20,14 +22,14 @@ configuration {
 @theme "/dev/null"
 
 * {
-    bg-col:  rgba(26, 27, 38, 0.7);
-    bg-col-light: rgba(36, 40, 59, 0.7);
-    border-col: #7aa2f7;
-    selected-col: rgba(40, 52, 87, 0.8);
-    blue: #7aa2f7;
-    fg-col: #c0caf5;
-    fg-col2: #a9b1d6;
-    width: 600;
+    bg-col:  rgba(45, 45, 45, 0.92);
+    bg-col-light: rgba(54, 54, 54, 0.95);
+    border-col: #c45050;
+    selected-col: rgba(196, 80, 80, 0.85);
+    accent: #c45050;
+    fg-col: #c0c0c0;
+    fg-col2: #909090;
+    width: 500;
 }
 
 element-text, element-icon {
@@ -36,30 +38,34 @@ element-text, element-icon {
 }
 
 window {
-    height: 360px;
+    width: 500px;
+    x-offset: 0px;
+    y-offset: 0px;
+    anchor: center;
+    location: center;
     border: 2px;
-    border-color: @blue;
+    border-color: @accent;
     background-color: @bg-col;
     border-radius: 12px;
 }
 
 mainbox {
     background-color: transparent;
-    children: [inputbar, listview, mode-switcher];
+    children: [inputbar, listview];
 }
 
 inputbar {
     children: [prompt, entry];
     background-color: @bg-col-light;
     border-radius: 8px;
-    margin: 10px 10px 0px 10px;
+    margin: 10px;
     padding: 2px;
 }
 
 prompt {
-    background-color: @blue;
+    background-color: @accent;
     padding: 8px 12px;
-    text-color: #1a1b26;
+    text-color: #1a1a1a;
     border-radius: 6px;
 }
 
@@ -67,16 +73,16 @@ entry {
     padding: 8px;
     text-color: @fg-col;
     background-color: transparent;
-    placeholder: "Search...";
+    placeholder: "Search applications...";
     placeholder-color: @fg-col2;
 }
 
 listview {
     border: 0px;
-    padding: 10px;
-    margin: 0px 10px 10px 10px;
+    padding: 0px 10px 10px 10px;
+    margin: 0px;
     columns: 1;
-    lines: 8;
+    lines: 6;
     background-color: transparent;
     fixed-height: false;
     dynamic: true;
@@ -96,24 +102,5 @@ element-icon {
 
 element selected {
     background-color:  @selected-col;
-    text-color: @blue;
-}
-
-mode-switcher {
-    spacing: 0;
-    margin: 0 10px 10px 10px;
-}
-
-button {
-    padding: 10px;
-    background-color: transparent;
-    text-color: @fg-col2;
-    vertical-align: 0.5; 
-    horizontal-align: 0.5;
-}
-
-button selected {
-    background-color: @selected-col;
-    text-color: @blue;
-    border-radius: 6px;
+    text-color: #ffffff;
 }

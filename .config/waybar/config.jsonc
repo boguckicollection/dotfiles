@@ -2,28 +2,56 @@
     "layer": "top",
     "position": "top",
     "height": 30,
-    "spacing": 4,
-    "modules-left": ["hyprland/workspaces"],
-    "modules-center": ["clock"],
-    "modules-right": ["tray", "pulseaudio", "bluetooth", "network", "battery"],
+    "spacing": 0,
+    "modules-left": ["hyprland/workspaces", "mpris"],
+    "modules-center": ["hyprland/window"],
+    "modules-right": ["tray", "custom/updates", "custom/portfolio", "pulseaudio", "bluetooth", "network", "battery", "clock"],
 
-    // Konfiguracja modułów
     "hyprland/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
         "format": "{name}"
     },
+    "mpris": {
+        "format": "🎵 {artist} - {title}",
+        "format-paused": "⏸ {artist} - {title}",
+        "max-length": 40
+    },
+    "hyprland/window": {
+        "format": "{}",
+        "max-length": 50,
+        "rewrite": {
+            "(.*) - Mozilla Firefox": "🌎 $1",
+            "(.*) - Ghostty": "  $1",
+            "(.*) - Visual Studio Code": "󰨞 $1"
+        }
+    },
     "clock": {
-        "format": "{:%H:%M  %d-%m-%Y}",
+        "format": " {:%d.%m %H:%M}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
+    "custom/portfolio": {
+        "exec": "~/.config/waybar/scripts/crypto-portfolio.sh",
+        "return-type": "json",
+        "interval": 300,
+        "tooltip": true,
+        "format": "{}",
+        "escape": false
+    },
+    "custom/updates": {
+        "exec": "~/.config/waybar/scripts/updates.sh",
+        "return-type": "json",
+        "interval": 3600,
+        "tooltip": true,
+        "on-click": "~/.config/waybar/scripts/run-updates.sh"
+    },
     "tray": {
-        "icon-size": 21,
-        "spacing": 10
+        "icon-size": 18,
+        "spacing": 8
     },
     "pulseaudio": {
-        "format": "{icon}   {volume}%",
-        "format-bluetooth": "{icon}   {volume}%",
+        "format": "{icon} {volume}%",
+        "format-bluetooth": "{icon} {volume}%",
         "format-muted": "🔇",
         "format-icons": {
             "headphone": "",
@@ -35,21 +63,18 @@
             "default": ["", "", ""]
         },
         "scroll-step": 1,
-        "on-click": "pavucontrol"
+        "on-click": "gnome-control-center sound"
     },
     "bluetooth": {
-        "format": " {status}",
-        "format-connected": " {device_alias}",
-        "format-connected-battery": " {device_alias} {device_battery_percentage}%",
+        "format": " {status}",
+        "format-connected": " {device_alias}",
+        "format-connected-battery": " {device_alias} {device_battery_percentage}%",
         "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
-        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
-        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-        "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
-        "on-click": "blueman-manager"
+        "on-click": "~/.config/rofi/scripts/bt.sh"
     },
     "network": {
-        "format-wifi": "   {essid}",
-        "format-ethernet": "🔗   {ipaddr}/{cidr}",
+        "format-wifi": "  {essid}",
+        "format-ethernet": "🔗 {ipaddr}",
         "tooltip-format": "{ifname} via {gwaddr}",
         "format-linked": "{ifname} (No IP)",
         "format-disconnected": "⚠ Disconnected",
@@ -61,10 +86,10 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "{icon}   {capacity}%",
-        "format-charging": "⚡   {capacity}%",
-        "format-plugged": "   {capacity}%",
-        "format-alt": "{icon}   {time}",
+        "format": "{icon} {capacity}%",
+        "format-charging": "⚡ {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{icon} {time}",
         "format-icons": ["", "", "", "", ""]
     }
 }

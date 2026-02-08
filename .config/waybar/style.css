@@ -1,69 +1,89 @@
 * {
     border: none;
     border-radius: 0;
-    font-family: "Inter", "Roboto", sans-serif;
+    font-family: "JetBrainsMono Nerd Font", "Inter", sans-serif;
     font-size: 13px;
     min-height: 0;
+    margin: 0;
+    padding: 0;
 }
 
 window#waybar {
-    background-color: rgba(26, 27, 38, 0.6);
-    color: #cfcfff; /* Jasno szary / białawy */
-    transition-property: background-color;
-    transition-duration: .5s;
-    border-bottom: 1px solid rgba(122, 162, 247, 0.2);
+    background-color: rgba(45, 45, 45, 0.9);
+    color: #c0c0c0;
+    border-bottom: 2px solid rgba(196, 80, 80, 0.5);
 }
 
 #workspaces button {
-    padding: 0 10px;
-    background-color: transparent;
-    color: #707070; /* Ciemniejszy szary dla nieaktywnych */
+    padding: 0 8px;
+    color: #606060;
     transition: all 0.2s ease;
 }
 
 #workspaces button:hover {
-    color: #e0e0e0; /* Jaśniejszy przy najechaniu */
+    color: #a0a0a0;
+    background: rgba(255, 255, 255, 0.1);
 }
 
 #workspaces button.active {
-    color: #ffffff; /* Czysty biały/jasny dla aktywnego */
-    /* Brak podkreślenia i tła - czysty minimalizm */
+    color: #e0e0e0;
+    border-bottom: 2px solid #c45050;
 }
 
 #workspaces button.urgent {
-    color: #f7768e;
+    color: #c45050;
 }
 
-#clock,
-#battery,
-#network,
-#bluetooth,
-#pulseaudio,
-#tray {
-    padding: 0 12px;
-    color: #cfcfff; /* Jasno szary dla wszystkich modułów */
+#mpris {
+    padding: 0 10px;
+    color: #909090;
+    font-style: italic;
 }
+
+#window {
+    padding: 0 10px;
+    font-weight: bold;
+    color: #e0e0e0;
+}
+
+/* Prawa strona - moduły */
+#tray,
+#custom-updates,
+#custom-portfolio,
+#pulseaudio,
+#bluetooth,
+#network,
+#battery,
+#custom-date {
+    padding: 0 6px;
+    margin: 0 2px;
+    color: #c0c0c0;
+    background-color: transparent;
+}
+
+#custom-date {
+    font-weight: bold;
+    color: #e0e0e0;
+    margin-right: 8px;
+}
+
+#custom-portfolio { color: #d4a574; }
+#custom-portfolio.portfolio-up { color: #50c450; }
+#custom-portfolio.portfolio-down { color: #c45050; }
+
+#custom-updates { color: #c45050; }
+#custom-updates.updates-none { color: #606060; }
+
+#battery.charging, #battery.plugged { color: #50c450; }
+#battery.critical:not(.charging) { color: #c45050; animation-name: blink; animation-duration: 0.5s; animation-timing-function: linear; animation-iteration-count: infinite; animation-direction: alternate; }
+
+@keyframes blink { to { color: #ffffff; } }
 
 #clock {
-    font-weight: 600;
-}
-
-#pulseaudio.muted {
-    color: #565f89;
-}
-
-#bluetooth.connected {
-    color: #7aa2f7;
-}
-
-#bluetooth.off {
-    color: #565f89;
-}
-
-#battery.warning {
-    color: #e0af68;
-}
-
-#battery.critical:not(.charging) {
-    color: #f7768e;
+    font-weight: bold;
+    color: #e0e0e0;
+    padding: 0 12px 0 12px; /* Większy odstęp wewnątrz */
+    margin-left: 10px;      /* Większy odstęp od baterii */
+    margin-right: 6px;      /* Odstęp od końca ekranu */
+    border-left: 1px solid rgba(196, 80, 80, 0.3); /* Separator opcjonalny */
 }
