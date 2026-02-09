@@ -1,0 +1,52 @@
+/* Kolory i bazowe tło */
+#swappy window {
+    background-color: #2d2d2d;
+    color: #e0e0e0;
+}
+
+/* Przebudowa paska narzędzi na "dwulinijkowy" przy użyciu flexboxa */
+#swappy box.horizontal {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 5px;
+}
+
+/* Narzędzia (pędzel, linia itp) - wymuszamy mniejszy rozmiar i ułożenie */
+#swappy button {
+    padding: 4px;
+    margin: 2px;
+    min-width: 32px;
+    min-height: 32px;
+    background-color: #363636;
+    border: 1px solid #c45050;
+    border-radius: 4px;
+}
+
+#swappy button:hover {
+    background-color: #c45050;
+}
+
+/* Ustawienia (suwaki rozmiaru itp) - nazwa nad ustawieniami */
+#swappy box.horizontal > box.vertical {
+    margin: 5px;
+    padding: 2px;
+}
+
+/* Etykiety nad suwakami */
+#swappy label {
+    font-size: 10px;
+    font-weight: bold;
+    margin-bottom: 2px;
+}
+
+/* Przyciski specjalne (transparent itp) - jeden pod drugim */
+#swappy box.vertical button {
+    margin: 1px 0;
+}
+
+/* Ukrycie zbędnych separatorów dla czystszego wyglądu */
+#swappy separator {
+    opacity: 0;
+    width: 0;
+    margin: 0;
+}
