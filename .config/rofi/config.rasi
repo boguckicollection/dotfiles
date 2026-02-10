@@ -24,9 +24,9 @@ configuration {
 * {
     bg-col:  rgba(45, 45, 45, 0.92);
     bg-col-light: rgba(54, 54, 54, 0.95);
-    border-col: #c45050;
-    selected-col: rgba(196, 80, 80, 0.85);
-    accent: #c45050;
+    border-col: #d3d3d3;
+    selected-col: rgba(211, 211, 211, 0.85);
+    accent: #d3d3d3;
     fg-col: #c0c0c0;
     fg-col2: #909090;
     width: 500;

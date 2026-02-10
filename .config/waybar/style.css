@@ -11,7 +11,7 @@
 window#waybar {
     background-color: rgba(45, 45, 45, 0.9);
     color: #c0c0c0;
-    border-bottom: 2px solid rgba(196, 80, 80, 0.5);
+    border-bottom: 2px solid rgba(211, 211, 211, 0.5);
 }
 
 #workspaces button {
@@ -27,11 +27,11 @@ window#waybar {
 
 #workspaces button.active {
     color: #e0e0e0;
-    border-bottom: 2px solid #c45050;
+    border-bottom: 2px solid #d3d3d3;
 }
 
 #workspaces button.urgent {
-    color: #c45050;
+    color: #d3d3d3;
 }
 
 #mpris {
@@ -69,13 +69,13 @@ window#waybar {
 
 #custom-portfolio { color: #d4a574; }
 #custom-portfolio.portfolio-up { color: #50c450; }
-#custom-portfolio.portfolio-down { color: #c45050; }
+#custom-portfolio.portfolio-down { color: #d3d3d3; }
 
-#custom-updates { color: #c45050; }
+#custom-updates { color: #d3d3d3; }
 #custom-updates.updates-none { color: #606060; }
 
 #battery.charging, #battery.plugged { color: #50c450; }
-#battery.critical:not(.charging) { color: #c45050; animation-name: blink; animation-duration: 0.5s; animation-timing-function: linear; animation-iteration-count: infinite; animation-direction: alternate; }
+#battery.critical:not(.charging) { color: #d3d3d3; animation-name: blink; animation-duration: 0.5s; animation-timing-function: linear; animation-iteration-count: infinite; animation-direction: alternate; }
 
 @keyframes blink { to { color: #ffffff; } }
 
@@ -85,5 +85,5 @@ window#waybar {
     padding: 0 12px 0 12px; /* Większy odstęp wewnątrz */
     margin-left: 10px;      /* Większy odstęp od baterii */
     margin-right: 6px;      /* Odstęp od końca ekranu */
-    border-left: 1px solid rgba(196, 80, 80, 0.3); /* Separator opcjonalny */
+    border-left: 1px solid rgba(211, 211, 211, 0.3); /* Separator opcjonalny */
 }
