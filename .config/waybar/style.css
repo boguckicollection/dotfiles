@@ -50,6 +50,9 @@ window#waybar {
 #tray,
 #custom-updates,
 #custom-portfolio,
+#cpu,
+#memory,
+#temperature,
 #pulseaudio,
 #bluetooth,
 #network,
@@ -73,6 +76,15 @@ window#waybar {
 
 #custom-updates { color: #d3d3d3; }
 #custom-updates.updates-none { color: #606060; }
+
+#cpu { color: #a0a0a0; }
+#cpu.warning { color: #d4a574; }
+#cpu.critical { color: #e06060; }
+
+#memory { color: #a0a0a0; }
+
+#temperature { color: #a0a0a0; }
+#temperature.critical { color: #e06060; }
 
 #battery.charging, #battery.plugged { color: #50c450; }
 #battery.critical:not(.charging) { color: #d3d3d3; animation-name: blink; animation-duration: 0.5s; animation-timing-function: linear; animation-iteration-count: infinite; animation-direction: alternate; }

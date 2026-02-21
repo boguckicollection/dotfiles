@@ -5,7 +5,7 @@
     "spacing": 0,
     "modules-left": ["hyprland/workspaces", "mpris"],
     "modules-center": ["hyprland/window"],
-    "modules-right": ["tray", "custom/updates", "custom/portfolio", "pulseaudio", "bluetooth", "network", "battery", "clock"],
+    "modules-right": ["tray", "custom/updates", "custom/portfolio", "custom/sysmonitor", "cpu", "memory", "temperature", "pulseaudio", "bluetooth", "network", "battery", "clock"],
 
     "hyprland/workspaces": {
         "disable-scroll": true,
@@ -44,6 +44,34 @@
         "interval": 3600,
         "tooltip": true,
         "on-click": "~/.config/waybar/scripts/run-updates.sh"
+    },
+    "cpu": {
+        "interval": 5,
+        "format": "  {usage}%",
+        "tooltip-format": "CPU: {usage}%\nLoad: {load}",
+        "states": {
+            "warning": 70,
+            "critical": 90
+        },
+        "on-click": "alacritty -e htop"
+    },
+    "memory": {
+        "interval": 10,
+        "format": "󰘚  {percentage}%",
+        "tooltip-format": "RAM: {used:0.1f}G / {total:0.1f}G\nSwap: {swapUsed:0.1f}G / {swapTotal:0.1f}G",
+        "on-click": "alacritty -e htop"
+    },
+    "temperature": {
+        "thermal-zone": 2,
+        "critical-threshold": 85,
+        "format": "  {temperatureC}°C",
+        "format-critical": "  {temperatureC}°C",
+        "tooltip-format": "CPU Package: {temperatureC}°C"
+    },
+    "custom/sysmonitor": {
+        "exec": "~/.config/waybar/scripts/sys_monitor.sh",
+        "interval": 10,
+        "return-type": "json"
     },
     "tray": {
         "icon-size": 18,
