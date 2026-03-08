@@ -8,6 +8,11 @@ set -e # Przerwij w razie błędu
 
 echo "🚀 Rozpoczynam instalację środowiska Hyprland..."
 
+# 0. Dodanie PPA dla Hyprland (Ubuntu 24.04)
+echo "📦 Dodawanie PPA Hyprland..."
+sudo add-apt-repository -y ppa:hyprland/stable || true
+sudo apt update
+
 # 1. Aktualizacja systemu i instalacja zależności
 echo "📦 Aktualizacja repozytoriów..."
 sudo apt update && sudo apt upgrade -y
@@ -18,7 +23,7 @@ sudo apt install -y git curl wget build-essential unzip tar fastfetch htop jq bc
 
 # Hyprland i środowisko graficzne
 # (Ubuntu 24.04 ma hyprland w repo, dla starszych trzeba dodać ppa)
-sudo apt install -y hyprland waybar rofi wofi swaync swaybg swaylock swayidle hypridle hyprlock hyprpaper \
+sudo apt install -y hyprland waybar rofi wofi sway-notification-center swaybg swaylock swayidle hypridle hyprlock hyprpaper \
     mako \
     polkit-kde-agent-1 xdg-desktop-portal-hyprland qt5-style-kvantum qt5ct \
     brightnessctl playerctl pamixer pavucontrol
