@@ -14,7 +14,7 @@ sudo apt update && sudo apt upgrade -y
 
 echo "📦 Instalacja wymaganych pakietów..."
 # Podstawowe narzędzia
-sudo apt install -y git curl wget build-essential unzip tar neofetch htop jq bc
+sudo apt install -y git curl wget build-essential unzip tar fastfetch htop jq bc
 
 # Hyprland i środowisko graficzne
 # (Ubuntu 24.04 ma hyprland w repo, dla starszych trzeba dodać ppa)
