@@ -43,6 +43,15 @@ sudo apt install -y fish alacritty
 # Czcionki
 sudo apt install -y fonts-font-awesome fonts-jetbrains-mono fonts-noto-color-emoji fonts-powerline
 
+# Nerd Fonts (wymagane dla ikon w waybar/rofi)
+echo "📦 Instalacja Nerd Fonts..."
+mkdir -p ~/.local/share/fonts
+cd /tmp
+curl -fLo "JetBrainsMono.zip" https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/JetBrainsMono.zip
+unzip -o JetBrainsMono.zip -d ~/.local/share/fonts/JetBrainsMono
+rm JetBrainsMono.zip
+fc-cache -f -v
+
 # SDDM (Display Manager)
 echo "🖥️ Instalacja i konfiguracja SDDM..."
 sudo apt install -y sddm qml-module-qtquick-controls2 qml-module-qtquick-layouts qml-module-qtgraphicaleffects
