@@ -21,12 +21,21 @@ echo "📦 Instalacja wymaganych pakietów..."
 # Podstawowe narzędzia
 sudo apt install -y git curl wget build-essential unzip tar fastfetch htop jq bc
 
-# Hyprland i środowisko graficzne
-# (Ubuntu 24.04 ma hyprland w repo, dla starszych trzeba dodać ppa)
-sudo apt install -y hyprland waybar rofi wofi sway-notification-center swaybg swaylock swayidle hypridle hyprlock hyprpaper \
-    mako \
-    polkit-kde-agent-1 xdg-desktop-portal-hyprland qt5-style-kvantum qt5ct \
+# Hyprland i środowisko graficzne (Część 1 - główne pakiety)
+sudo apt install -y hyprland waybar rofi wofi sway-notification-center swaybg swaylock swayidle hyprpaper \
+    polkit-kde-agent-1 xdg-desktop-portal-hyprland \
     brightnessctl playerctl pamixer pavucontrol
+
+# Hyprland dodatki (mogą wymagać PPA lub instalacji ręcznej)
+echo "📦 Instalacja dodatków Hyprland..."
+sudo apt install -y hypridle hyprlock 2>/dev/null || echo "⚠️ hypridle/hyprlock niedostępne - zainstaluj ręcznie"
+
+# Powiadomienia (używamy sway-notification-center zamiast mako)
+echo "📦 Konfiguracja powiadomień..."
+
+# Stylizacja Qt5
+sudo apt install -y qt5ct || true
+sudo apt install -y qt5-style-kvantum 2>/dev/null || echo "⚠️ qt5-style-kvantum niedostępne"
 
 # Terminal i Shell
 sudo apt install -y fish alacritty
