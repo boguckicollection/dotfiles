@@ -14,11 +14,12 @@ sudo apt update && sudo apt upgrade -y
 
 echo "📦 Instalacja wymaganych pakietów..."
 # Podstawowe narzędzia
-sudo apt install -y git curl wget build-essential unzip tar neofetch htop
+sudo apt install -y git curl wget build-essential unzip tar neofetch htop jq bc
 
 # Hyprland i środowisko graficzne
 # (Ubuntu 24.04 ma hyprland w repo, dla starszych trzeba dodać ppa)
-sudo apt install -y hyprland waybar rofi wofi swaync swaybg swaylock swayidle \
+sudo apt install -y hyprland waybar rofi wofi swaync swaybg swaylock swayidle hypridle hyprlock hyprpaper \
+    mako \
     polkit-kde-agent-1 xdg-desktop-portal-hyprland qt5-style-kvantum qt5ct \
     brightnessctl playerctl pamixer pavucontrol
 
@@ -26,7 +27,7 @@ sudo apt install -y hyprland waybar rofi wofi swaync swaybg swaylock swayidle \
 sudo apt install -y fish alacritty
 
 # Czcionki
-sudo apt install -y fonts-font-awesome fonts-jetbrains-mono fonts-noto-color-emoji
+sudo apt install -y fonts-font-awesome fonts-jetbrains-mono fonts-noto-color-emoji fonts-powerline
 
 # SDDM (Display Manager)
 echo "🖥️ Instalacja i konfiguracja SDDM..."
