@@ -23,8 +23,7 @@ sudo apt install -y hyprland waybar rofi wofi swaync swaybg swaylock swayidle \
     brightnessctl playerctl pamixer pavucontrol
 
 # Terminal i Shell
-sudo apt install -y fish alacritty # lub ghostty jeśli dostępny w snap/ppa
-# (Ghostty instalujemy osobno jeśli nie ma w apt)
+sudo apt install -y fish alacritty
 
 # Czcionki
 sudo apt install -y fonts-font-awesome fonts-jetbrains-mono fonts-noto-color-emoji

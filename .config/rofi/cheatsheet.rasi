@@ -1,11 +1,9 @@
 configuration {
-    modi: "drun";
-    show-icons: true;
-    display-drun: " ";
-    drun-display-format: "{icon} {name}";
-    font: "Sans 12";
-    terminal: "alacritty";
-    
+    modi: "Cheatsheet";
+    show-icons: false;
+    font: "JetBrainsMono Nerd Font Mono 11";
+    terminal: "ghostty";
+
     kb-mode-next: "";
     kb-mode-previous: "";
     kb-element-next: "";
@@ -13,10 +11,6 @@ configuration {
     kb-row-down: "Down,Tab";
     kb-row-up: "Up,Shift+Tab";
     kb-accept-entry: "Return,KP_Enter";
-    
-    xft-dpi: 0;
-    xft-antialias: true;
-    xft-hinting: true;
 }
 
 @theme "/dev/null"
@@ -29,7 +23,7 @@ configuration {
     accent: #d3d3d3;
     fg-col: #c0c0c0;
     fg-col2: #909090;
-    width: 500;
+    separator-col: #606060;
 }
 
 element-text, element-icon {
@@ -38,7 +32,7 @@ element-text, element-icon {
 }
 
 window {
-    width: 500px;
+    width: 700px;
     x-offset: 0px;
     y-offset: 0px;
     anchor: center;
@@ -73,7 +67,7 @@ entry {
     padding: 8px;
     text-color: @fg-col;
     background-color: transparent;
-    placeholder: "Search applications...";
+    placeholder: "Szukaj...";
     placeholder-color: @fg-col2;
 }
 
@@ -82,22 +76,21 @@ listview {
     padding: 0px 10px 10px 10px;
     margin: 0px;
     columns: 1;
-    lines: 6;
+    lines: 15;
     background-color: transparent;
     fixed-height: false;
     dynamic: true;
 }
 
 element {
-    padding: 8px;
+    padding: 4px 8px;
     background-color: transparent;
     text-color: @fg-col2;
     border-radius: 6px;
 }
 
 element-icon {
-    size: 24px;
-    margin: 0 10px 0 0;
+    size: 0px;
 }
 
 element selected {
