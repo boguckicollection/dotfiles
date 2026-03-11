@@ -59,6 +59,14 @@ sudo apt install -y hyprland waybar rofi wofi sway-notification-center swaybg sw
     polkit-kde-agent-1 xdg-desktop-portal-hyprland \
     brightnessctl playerctl pamixer pavucontrol
 
+# Bluetooth i powiadomienia (dla skryptów Rofi)
+log_info "Instalacja Bluetooth i powiadomień..."
+sudo apt install -y bluez bluez-tools libnotify-bin
+
+# Clipboard (cliphist)
+log_info "Instalacja cliphist..."
+sudo apt install -y cliphist 2>/dev/null || log_warn "cliphist niedostępne - zainstaluj ręcznie"
+
 # Dodatki Hyprland
 log_info "Instalacja dodatków Hyprland..."
 sudo apt install -y hypridle hyprlock 2>/dev/null || log_warn "hypridle/hyprlock niedostępne"
