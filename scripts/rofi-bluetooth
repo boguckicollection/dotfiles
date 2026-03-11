@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Pobierz sparowane urządzenia
+devices=$(bluetoothctl devices Paired | awk '{print $3 " (" $2 ")"}')
+
+choice=$(echo "$devices" | rofi -dmenu -i -p "Bluetooth:" -l 10 -width 40 -no-custom)
+
+if [ -n "$choice" ]; then
+    # Wyciągnij MAC address z nawiasów
+    mac=$(echo "$choice" | grep -oE "[0-9A-F:]{17}")
+    
+    # Próba połączenia
+    notify-send "Łączenie z $choice..."
+    bluetoothctl connect "$mac"
+fi

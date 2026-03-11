@@ -1,0 +1,98 @@
+# === EXCLUDE PATTERNS FOR SYSTEM BACKUP ===
+# Pliki i katalogi pomijane przy backupzie (nie trafiają do repo)
+
+# --- SSH i klucze ---
+.ssh/
+
+# --- Hasła i sekrety ---
+.gnome-keyring/
+.kwallet/
+keyring/
+secrets/
+passwords/
+
+# --- Historia shell ---
+.bash_history
+.zsh_history
+.fish_history
+
+# --- PGP/GPG ---
+.gnupg/private-keys-v1.d/
+.gnupg/openpgp-revocs.d/
+.gnupg/*.gpg
+.gnupg/*.key
+
+# --- Cache ---
+.cache/
+.npm/_cacache/
+.npm/.package-lock.json
+.yarn/cache
+.gem/cache
+.nvm/alias
+go/pkg/mod/cache/
+
+# --- Pobrane pliki (nie konfiguracja) ---
+Pobrane/
+Downloads/
+
+# --- Bazy danych aplikacji ---
+.antigravity/
+.var/app/*/databases/
+.snap/
+
+# --- Certyfikaty prywatne ---
+certs/*.key
+certs/*.pem
+certs/*.p12
+
+# --- Vim/NeoVim swap ---
+*.swp
+*.swo
+*~
+.netrwhist
+
+# --- IDE i edytory ---
+.vscode/extensions/
+.idea/
+*.iml
+
+# --- Tymczasowe ---
+*.tmp
+*.temp
+*.log
+
+# --- Przeglądarki (tylko config, nie dane) ---
+# Wyklucz profile przeglądarek - zawierają historię, cookies, hasła
+.config/BraveSoftware/Brave-Browser/Default/
+.config/google-chrome/Default/
+.config/firefox/*.default*/
+.config/microsoft-edge/Default/
+
+# --- Katalog domowy - tylko wybrane pliki ---
+# Wyklucz cały katalog główny, będziemy dodawać selektywnie
+
+# --- Flatpak/Steam/duże aplikacje ---
+.local/share/flatpak/
+.local/share/Steam/
+.steam/
+
+# --- Signal/Telegram/Session ---
+.config/Signal/
+.config/TelegramDesktop/
+.config/session-desktop/
+
+# --- LibreOffice/AOffice cache ---
+.config/libreoffice/
+
+# --- Vencord/Vesktop cache ---
+.var/app/dev.vencord.Vesktop/
+
+# --- Go ---
+go/pkg/mod/
+
+# --- Cargo/Rust ---
+.cargo/registry/
+
+# --- .git w katalogu domowym ---
+.git-credentials
+.gitconfig.secret

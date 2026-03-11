@@ -1,0 +1,11 @@
+#!/bin/bash
+
+options="Wyłącz\nRestart\nWyloguj"
+
+choice=$(echo -e "$options" | rofi -dmenu -i -p "System:" -l 3 -width 20 -no-custom)
+
+case $choice in
+    "Wyłącz") systemctl poweroff ;;
+    "Restart") systemctl reboot ;;
+    "Wyloguj") loginctl terminate-user $USER ;;
+esac

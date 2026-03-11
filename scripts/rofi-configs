@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Lista plików konfiguracyjnych (możesz tu dodać swoje)
+declare -A configs
+configs=(
+    ["Bash RC"]="$HOME/.bashrc"
+    ["Vim Config"]="$HOME/.vimrc"
+    ["Ghostty Config"]="$HOME/.config/ghostty/config"
+    ["Rofi Config"]="$HOME/.config/rofi/config.rasi"
+)
+
+# Wybór przez Rofi z wymuszonym rozmiarem okna
+choice=$(printf "%s\n" "${!configs[@]}" | rofi -dmenu -i -p "Edytuj config:" -l 10 -width 30 -no-custom)
+
+# Jeśli wybrano, otwórz w Ghostty + Vim
+if [ -n "$choice" ]; then
+    alacritty -e vim "${configs[$choice]}"
+fi

@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Skanowanie sieci
+notify-send "Skanowanie sieci WiFi..."
+wifi_list=$(nmcli -f "SSID,SECURITY,BARS" device wifi list | sed 1d | grep -v '^--')
+
+# Wybór sieci z lepszym formatowaniem okna
+choice=$(echo "$wifi_list" | rofi -dmenu -i -p "WiFi:" -p "Wybierz sieć" -l 15 -width 50 -no-custom | awk '{print $1}')
+
+if [ -n "$choice" ]; then
+    # Sprawdź czy sieć jest już znana
+    if nmcli connection show | grep -q "$choice"; then
+        nmcli connection up "$choice"
+    else
+        # Jeśli nowa sieć, poproś o hasło
+        password=$(rofi -dmenu -p "Hasło dla $choice:" -password)
+        [ -n "$password" ] && nmcli device wifi connect "$choice" password "$password"
+    fi
+fi

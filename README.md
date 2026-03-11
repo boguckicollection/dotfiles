@@ -1,31 +1,49 @@
-# Instrukcja przywracania dotfiles (Ubuntu -> Debian 13)
+# Hyprland Full System Backup
 
-Ten folder zawiera konfiguracje dla: Hyprland, Waybar, Alacritty, Rofi oraz Fish.
+Pełny backup konfiguracji systemu (bez danych wrażliwych).
 
-## Przed instalacją Debiana (na Ubuntu)
-Upewnij się, że Twoje repozytorium jest na GitHubie:
-1. `gh auth login`
-2. `cd ~/dotfiles`
-3. `gh repo create dotfiles --public --source=. --remote=origin --push` (jeśli jeszcze nie istnieje)
-4. `git push origin master` (aby wysłać najnowsze zmiany)
+## Co zawiera
 
-## Po instalacji Debiana 13
+- `.config/` - Konfiguracje: Hyprland, Waybar, Rofi, Alacritty, Fish, GTK, Kitty, Ghostty, Brave, QuteBrowser, htop
+- `wallpapers/` - 45 tapet
+- `scripts/` - Skrypty użytkownika (.local/bin)
+- `.bashrc`, `.profile`, `.gitconfig` - Konfiguracja powłoki
+- `dconf-backup.ini` - Ustawienia systemowe GNOME
+- `install.sh` - Automatyczny instalator
 
-### 1. Instalacja niezbędnych pakietów
-Otwórz terminal i zainstaluj wymagane oprogramowanie:
+## Bezpieczeństwo
+
+**NIE zawiera:**
+- Kluczy SSH (`~/.ssh/`)
+- Haseł i sekretów
+- Historii shell (`~/.bash_history`)
+- Danych przeglądarek (cookies, hasła, historia)
+- Plików cache
+- Pobranych plików
+
+## Instalacja
+
 ```bash
-sudo apt update
-sudo apt install git hyprland waybar alacritty rofi fish blueman fonts-inter fonts-font-awesome
-```
-
-### 2. Pobranie i instalacja konfiguracji
-```bash
-git clone https://github.com/TWOJA_NAZWA_UZYTKOWNIKA/dotfiles.git ~/dotfiles
+git clone https://github.com/TWOJ_USER/dotfiles.git ~/dotfiles
 cd ~/dotfiles
 chmod +x install.sh
 ./install.sh
 ```
 
-### 3. Dodatkowe uwagi
-- **Ghostty**: W Twojej konfiguracji Hyprland terminal jest ustawiony na `ghostty`. Jeśli nie zainstalujesz go na Debianie, zmień `$terminal` w `~/.config/hypr/hyprland.conf` na `alacritty`.
-- **Bluetooth**: Pamiętaj o uruchomieniu apletu Bluetooth, jeśli chcesz mieć go w zasobniku systemowym: `exec-once = blueman-applet` w `hyprland.conf`.
+Po instalacji pamiętaj o:
+1. Wygenerowaniu nowych kluczy SSH
+2. Skopiowaniu sekretów (jeśli potrzebne)
+
+## Aktualizacja backupu
+
+Aby zaktualizować backup na nowym komputerze po zmianach:
+
+```bash
+# Zaktualizuj dconf
+dconf dump / > ~/dotfiles/dconf-backup.ini
+
+# Zsyncuj nowe configi (rsync z exclusions)
+rsync -av --exclude='.cache' --exclude='.ssh' --exclude='.bash_history' \
+    --exclude='gnupg' --exclude='*.key' --exclude='*.pem' \
+    ~/.config/ ~/dotfiles/.config/
+```

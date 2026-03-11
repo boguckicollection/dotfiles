@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Wyciągnij hosty z configa ssh
+hosts=$(grep "^Host " ~/.ssh/config 2>/dev/null | awk '{print $2}' | grep -v '*')
+
+if [ -z "$hosts" ]; then
+    notify-send "Brak zdefiniowanych hostów w ~/.ssh/config"
+    exit 1
+fi
+
+choice=$(echo "$hosts" | rofi -dmenu -i -p "SSH Connect:" -l 10 -width 30 -no-custom)
+
+if [ -n "$choice" ]; then
+    alacritty -e ssh "$choice"
+fi

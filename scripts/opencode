@@ -1,0 +1,4 @@
+#!/bin/bash
+# OpenCode launcher with Antygravity support
+export PATH="$HOME/.local/share/opencode/node_modules/.bin:$PATH"
+exec opencode "$@"
